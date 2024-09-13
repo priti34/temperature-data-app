@@ -1,0 +1,13 @@
+<h2>View-data </h2>
+
+<div *NgIf="dataList.length; else noData">
+  <div *NgFor="let data of dataList">
+    <p>Date: {{ data.datetime }}</p>
+    <p>Temperature: {{ data.temperature }}</p>
+  </div>
+</div>
+
+<ng-template #noData>
+  <p>No data available.</p>
+</ng-template>
+

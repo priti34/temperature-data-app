@@ -1,0 +1,25 @@
+<h2>  Add-data </h2>
+<form [formGroup]="dataForm" (ngSubmit)="addData()">
+  <label for="datetime">Date and Time</label>
+  <input formControlName="datetime" type="datetime-local" id="datetime">
+  <div *ngIf="dataForm.controls['datetime'].hasError('required')">Datetime is required.</div>
+<div *ngIf="dataForm.controls['datetime'].hasError('futureDate')">Datetime must be in the future.</div>
+
+  <label for="temperature">Temperature (°C)</label>
+  <input formControlName="temperature" type="number" id="temperature">
+  <div *ngIf="dataForm.controls['temperature'].hasError('required')">Temperature is required.</div>
+  <div *ngIf="dataForm.controls['temperature'].hasError('min')">Temperature is too low.</div>
+  <div *ngIf="dataForm.controls['temperature'].hasError('max')">Temperature is too high.</div>
+
+  <button type="submit" [disabled]="dataForm.invalid">Add Data</button>
+</form>
+
+<ul>
+  <li *ngFor="let item of dataList">{{ item.datetime }} - {{ item.temperature }}°C</li>
+</ul>
+
+
+
+
+
+
